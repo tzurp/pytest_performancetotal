@@ -10,12 +10,10 @@ class PerformanceLogEntry:
     start_display_time: str
     duration: int
     is_test_passed: bool
-    br_name: str
     instance_id: str
 
     def __init__(self):
         self.name = ""
-        self.br_name = ""
         self.id = ""
         self.instance_id = ""
         self.start_time = 0

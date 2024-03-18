@@ -12,4 +12,4 @@ class PartialLogEntry:
         self.time = 0
         self.display_time = ""
         self.instance_id = ""
-        self.br_name = ""
+        
