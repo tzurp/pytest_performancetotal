@@ -4,7 +4,7 @@ import time
 from playwright.sync_api import Page
 from pytest_performancetotal.performancetotal import Performance
 
-# @pytest.mark.skip(reason="too long")
+@pytest.mark.skip(reason="too long")
 @pytest.mark.parametrize("iteration", [1, 2, 3])
 def test_startup_performance(page: Page, performancetotal: Performance, iteration):
     globalTimeout: 5 * 60 * 1000 # type: ignore

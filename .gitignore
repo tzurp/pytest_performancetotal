@@ -1,3 +1,7 @@
 __pycache__/
-*.pyc
 performance_results/
+build/
+dist/
+*.egg*
+*.pyc
+

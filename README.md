@@ -1,6 +1,6 @@
 # pytest-performancetotal
 
-With this plugin for [pytest](https://github.com/pytest-dev/pytest) and for [playwright-pytest](https://github.com/microsoft/playwright-pytest) you can easily add performance analysis to any flow in your tests, whether it's a pure UI, API, or a combination of both. This plugin provides a simple and efficient way to measure the response times of various procedures and identify potential bottlenecks in your application. With this information, you can make informed decisions about optimizations and improvements to enhance the overall performance of your application. Read more in the TypeScript version article [here](https://www.linkedin.com/pulse/elevating-your-playwright-tests-plugin-tzur-paldi-phd).
+With this plugin for [pytest](https://github.com/pytest-dev/pytest), which complements the [playwright-pytest](https://github.com/microsoft/playwright-pytest) integration, you can seamlessly incorporate performance analysis into your test flows. It’s designed to work with UI interactions, API calls, or a combination of both, providing a straightforward method for measuring response times and pinpointing potential performance issues within your application. By leveraging this data, you can make strategic decisions to optimize and enhance your application’s performance. For insights into the original concept and additional details, refer to the [article](https://www.linkedin.com/pulse/elevating-your-playwright-tests-plugin-tzur-paldi-phd) on the Node.js version of this plugin.
 
 ## Installation
 
