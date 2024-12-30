@@ -12,7 +12,7 @@ $ pip install pytest-performancetotal
 
 To use pytest-performancetotal, simply add the **performancetotal** fixture to the test method. This will include the performance functionality in your test. No further setup is required. Here's an example:
 
-```no-highlight
+```python
 import pytest
 
 @pytest.mark.parametrize("iteration", [1, 2, 3])
@@ -28,7 +28,7 @@ def test_features(performancetotal, iteration):
 
 You can also get immediate time span for a single sample inside a test:
 
-```no-highlight
+```python
 feature1_timespan = performancetotal.get_sample_time("feature1")
 ```
 be aware that get_sample_time returns a single measurement with no statistical analysis.
@@ -36,7 +36,7 @@ be aware that get_sample_time returns a single measurement with no statistical a
 
 To use type hints follow this example:
 
-```no-highlight
+```python
 from pytest_performancetotal.performance import Performance
 
 def test_features(performancetotal: Performance, iteration):

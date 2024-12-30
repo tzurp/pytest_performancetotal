@@ -7,7 +7,7 @@ setup(
     name='pytest-performancetotal',
     packages=find_packages(where='src', exclude=['*tests*']),
     package_dir={'': 'src'},
-    version='0.2.2',
+    version='0.2.3',
     author='Tzur Paldi',
     author_email='tzur.paldi@outlook.com',
     maintainer='Tzur Paldi',
@@ -19,7 +19,7 @@ setup(
     long_description=long_description,
     long_description_content_type='text/markdown',
     classifiers=[
-        "Development Status :: 4 - Beta",
+        "Development Status :: 5 - Production/Stable",
         "Framework :: Pytest",
     ],
     entry_points={
