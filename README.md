@@ -50,6 +50,33 @@ To disable appending new results into existing file and start fresh every run us
 pytest --performance-noappend
 ```
 
+### Configuring Logging in pytest.ini
+
+This plugin uses the native Python logging module to provide detailed logs during its execution. To ensure you can see these logs during testing, proper configuration is needed. The following instructions will guide you on how to configure pytest to output log messages to the console. This setup is particularly useful for debugging and tracking the behavior of your code.
+
+Steps to Configure Logging:
+
+Create or Update pytest.ini: If you do not already have a pytest.ini file, create one in the root directory of your project. If you have one, open it for editing.
+
+Add the Following Configuration:
+
+pytest.ini
+```no-highlight
+[pytest]
+log_cli = true
+log_cli_level = DEBUG
+log_cli_format = %(asctime)s - %(name)s - %(levelname)s - %(message)s
+log_cli_date_format = %Y-%m-%d %H:%M:%S
+```
+
+log_cli: Enables logging to the console.
+
+log_cli_level: Sets the logging level. You can choose from DEBUG, INFO, WARNING, ERROR, or CRITICAL.
+
+log_cli_format: Defines the format of the log messages.
+
+log_cli_date_format: Specifies the date format used in log messages.
+
 ## Getting the results
 
 A new directory named `performance_results` is created inside your project's root folder. Once all the tests are completed, two files are created inside the performance-results directory: `results.json` and `results.csv`. The analyzed data includes average time, standard error of mean (SEM), number of samples, minimum value, maximum value, earliest time, and latest time. The results table is also printed to the terminal log.
