@@ -2,9 +2,12 @@ import os
 from typing import List
 from filelock import FileLock
 from helpers.bcolors import Bcolors
+from helpers.logger import Logger
 
 
 class FileWriter:
+    def __init__(self):
+        self.logger = Logger()
 
     def get_file_lock(self, data_file_path):
         lock_file_path = f"{data_file_path}.lock"
@@ -17,9 +20,7 @@ class FileWriter:
                 with open(path, "r") as file:
                     data = file.read()
         except OSError as err:
-            print(
-                f"{Bcolors.WARNING}pytest_performancetotal: failed to read file {path}: {err} {Bcolors.ENDC}"
-            )
+            self.logger.error(f"{Bcolors.WARNING}pytest_performancetotal: failed to read file {path}: {err} {Bcolors.ENDC}")
             return []
         return data.splitlines()
 
@@ -30,7 +31,7 @@ class FileWriter:
                 with open(path, "w") as file:
                     file.write(data)
         except OSError as err:
-            print(
+            self.logger.error(
                 f"{Bcolors.WARNING}pytest_performancetotal error: '{path}' is not writable: {err} {Bcolors.ENDC}"
             )
 
@@ -41,7 +42,7 @@ class FileWriter:
                 with open(path, "a") as file:
                     file.write(data + "\n")
         except OSError as err:
-            print(
+            self.logger.error(
                 f"{Bcolors.WARNING}pytest_performancetotal error: file '{path}' is not writable (append): {err} {Bcolors.ENDC}"
             )
 
@@ -63,6 +64,6 @@ class FileWriter:
         try:
             os.mkdir(dir_path)
         except OSError as err:
-            print(
+            self.logger.error(
                 f"{Bcolors.WARNING}pytest_performancetotal: can't create directory '{dir_path}': {err} {Bcolors.ENDC}"
             )

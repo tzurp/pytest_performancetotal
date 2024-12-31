@@ -5,11 +5,14 @@ from helpers.calculator import Calculator
 from helpers.dic_builder import DictBuilder
 from helpers.file_writer import FileWriter
 from helpers.group import Group
+from helpers.logger import Logger
 from helpers.table_printer import print_dict_as_table
 
 class PerformanceAnalyzer:
     def __init__(self):
         self._performance_results = []
+        self.logger = Logger()
+    
 
     def analyze(
         self, log_file_name, save_data_file_path, drop_results_from_failed_test
@@ -80,13 +83,9 @@ class PerformanceAnalyzer:
                         "latest_time":result["latest_time"]
                     }
                     csv_writer.writerow(row)
-                print(
-                    f"{Bcolors.OKCYAN}pytest_performancetotal: results saved to: {save_data_file_path} {Bcolors.ENDC}"
-                )
+                self.logger.info(f"{Bcolors.OKCYAN}pytest_performancetotal: results saved to: {save_data_file_path} {Bcolors.ENDC}")
         except IOError as e:
-            print(
-                f"{Bcolors.WARNING}pytest_performancetotal: error occurred while writing to the CSV file: {e} {Bcolors.ENDC}"
-            )
+            self.logger.error(f"{Bcolors.WARNING}pytest_performancetotal: error occurred while writing to the CSV file: {e}. Make sure the file is not open in another program. {Bcolors.ENDC}")
 
     def deserialize_data(self, file_name: str):
         results_array = []
@@ -99,7 +98,5 @@ class PerformanceAnalyzer:
                     if "id" in performance_result:
                         results_array.append(performance_result)
         except Exception as e:
-            print(
-                f"{Bcolors.WARNING}pytest_performancetotal: error occurred while reading file {file_name}: {e} {Bcolors.ENDC}"
-            )
+            self.logger.error(f"{Bcolors.WARNING}pytest_performancetotal: error occurred while reading file {file_name}: {e} {Bcolors.ENDC}")
         return results_array
