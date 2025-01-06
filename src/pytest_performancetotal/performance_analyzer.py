@@ -20,7 +20,8 @@ class PerformanceAnalyzer:
             if recent_days > 0:
                 start_time = item["start_time"]
                 time_difference = ((int(datetime.now().timestamp())*1000 - start_time)/1000) / (24 * 3600)
-                return time_difference <= recent_days
+                if not (time_difference <= recent_days):
+                    return False
             if drop_results_from_failed_test:
                 return item["is_test_passed"]
             return True
