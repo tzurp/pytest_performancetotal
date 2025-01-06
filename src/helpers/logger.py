@@ -2,7 +2,7 @@ import logging
 
 class Logger:
     def __init__(self):
-        self.logger = logging.getLogger("performancetotal")
+        self.logger = logging.getLogger("performance")
 
     def debug(self, message: object):
         self.logger.debug(message)
