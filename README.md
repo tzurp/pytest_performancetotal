@@ -45,10 +45,32 @@ def test_features(performancetotal: Performance, iteration):
 
 ## Options
 
+### performance-noappend
+
 To disable appending new results into existing file and start fresh every run use:
+
 ```no-highlight
 pytest --performance-noappend
 ```
+
+> **⚠️ Caution:**
+>
+> This action will delete all your performance data permanently. Ensure that you have a backup before proceeding.
+
+### performance-drop-failed-results
+
+To drops results for failed tests use:
+
+```no-highlight
+pytest --performance-drop-failed-results
+```
+
+### performance-recent-days
+
+To set the umber of days to consider for performance analysis use:
+
+`pytest --performance-recent-days=7` or use day portion like: `pytest --performance-recent-days=0.5`
+
 
 ### Configuring Logging in pytest.ini
 
@@ -58,9 +80,8 @@ Steps to Configure Logging:
 
 Create or Update pytest.ini: If you do not already have a pytest.ini file, create one in the root directory of your project. If you have one, open it for editing.
 
-Add the Following Configuration:
+For example add the following configuration in file `pytest.ini`:
 
-pytest.ini
 ```no-highlight
 [pytest]
 log_cli = true
@@ -69,13 +90,13 @@ log_cli_format = %(asctime)s - %(name)s - %(levelname)s - %(message)s
 log_cli_date_format = %Y-%m-%d %H:%M:%S
 ```
 
-log_cli: Enables logging to the console.
+__log_cli__: Enables logging to the console.
 
-log_cli_level: Sets the logging level. You can choose from DEBUG, INFO, WARNING, ERROR, or CRITICAL.
+__log_cli_level__: Sets the logging level. You can choose from DEBUG, INFO, WARNING, ERROR, or CRITICAL.
 
-log_cli_format: Defines the format of the log messages.
+__log_cli_format__: Defines the format of the log messages.
 
-log_cli_date_format: Specifies the date format used in log messages.
+__log_cli_date_format__: Specifies the date format used in log messages.
 
 ## Getting the results
 

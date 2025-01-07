@@ -58,11 +58,11 @@ class Performance:
             test_passed,
         )
 
-    def analyze_results(self, workerIndex: int) -> None:
+    def analyze_results(self, drop_results_for_failed, recent_days) -> None:
         """Don't use this method directly."""
         analyzer = PerformanceAnalyzer()
         file_writer = FileWriter()
         results_dir = performancetotal_results_dir_path
         log_file_name = file_writer.get_file_path(results_dir, self.log_file_name)
         save_data_file_path = file_writer.get_file_path(results_dir, "results")
-        analyzer.analyze(log_file_name, save_data_file_path, False)
+        analyzer.analyze(log_file_name, save_data_file_path, drop_results_for_failed, recent_days)

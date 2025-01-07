@@ -7,6 +7,7 @@ from helpers.file_writer import FileWriter
 from helpers.group import Group
 from helpers.logger import Logger
 from helpers.table_printer import print_dict_as_table
+from datetime import datetime, timedelta
 
 class PerformanceAnalyzer:
     def __init__(self):
@@ -14,14 +15,19 @@ class PerformanceAnalyzer:
         self.logger = Logger()
     
 
-    def analyze(
-        self, log_file_name, save_data_file_path, drop_results_from_failed_test
-    ):
+    def analyze(self, log_file_name, save_data_file_path, drop_results_from_failed_test, recent_days):
+        def apply_filters(item):
+            if recent_days > 0:
+                start_time = item["start_time"]
+                time_difference = ((int(datetime.now().timestamp())*1000 - start_time)/1000) / (24 * 3600)
+                if not (time_difference <= recent_days):
+                    return False
+            if drop_results_from_failed_test:
+                return item["is_test_passed"]
+            return True
         performance_log_entries = self.deserialize_data(log_file_name)
-        if drop_results_from_failed_test:
-            performance_log_entries = [
-                e for e in performance_log_entries if e["is_test_passed"]
-            ]
+        if drop_results_from_failed_test or recent_days:
+            performance_log_entries = list(filter(apply_filters, performance_log_entries))
         if not performance_log_entries:
             return
         grouped_results = Group().group_by(performance_log_entries, ["name"])
