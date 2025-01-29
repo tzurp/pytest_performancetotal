@@ -71,6 +71,11 @@ To set the umber of days to consider for performance analysis use:
 
 `pytest --performance-recent-days=7` or use day portion like: `pytest --performance-recent-days=0.5`
 
+### performance-results-directory-name
+
+To set a custom directory for storing performance data. If not specified, the directory performance_results will be used under the same path as the test script
+
+`pytest --performance-results-directory-name='/your/custom/path/'`
 
 ### Configuring Logging in pytest.ini
 
