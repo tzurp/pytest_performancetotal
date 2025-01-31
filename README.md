@@ -4,7 +4,7 @@ With this plugin for [pytest](https://github.com/pytest-dev/pytest), which compl
 
 ## Installation
 
-```no-highlight
+```bash
 $ pip install pytest-performancetotal
 ```
 
@@ -43,13 +43,13 @@ def test_features(performancetotal: Performance, iteration):
             # ... your test code here
 ```
 
-## Options
+### Options
 
-### performance-noappend
+#### __--performance-noappend__
 
 To disable appending new results into existing file and start fresh every run use:
 
-```no-highlight
+```bash
 pytest --performance-noappend
 ```
 
@@ -57,20 +57,55 @@ pytest --performance-noappend
 >
 > This action will delete all your performance data permanently. Ensure that you have a backup before proceeding.
 
-### performance-drop-failed-results
+#### __--performance-drop-failed-results__
 
 To drops results for failed tests use:
 
-```no-highlight
+```bash
 pytest --performance-drop-failed-results
 ```
 
-### performance-recent-days
+#### __--performance-recent-days__
 
 To set the umber of days to consider for performance analysis use:
 
 `pytest --performance-recent-days=7` or use day portion like: `pytest --performance-recent-days=0.5`
 
+#### __--performance-results-dir__
+
+Set a custom results directory name/path:
+
+On WIndows:
+
+```bash
+pytest --performance-results-dir=results\01012025
+```
+
+or
+
+```bash
+pytest --performance-results-dir=myCustomDir
+```
+
+On Linux:
+
+```bash
+pytest --performance-results-dir=results/01012025
+```
+
+or
+
+```bash
+pytest --performance-results-dir=myCustomDir
+```
+
+#### __--performance-results-file__
+
+Set a custom results file name:
+
+```bash
+pytest --performance-results-file=myCustomFile
+```
 
 ### Configuring Logging in pytest.ini
 
@@ -85,7 +120,7 @@ For example add the following configuration in file `pytest.ini`:
 ```no-highlight
 [pytest]
 log_cli = true
-log_cli_level = DEBUG
+log_cli_level = DEBUG # or INFO|WARNING|ERROR|CRITICAL
 log_cli_format = %(asctime)s - %(name)s - %(levelname)s - %(message)s
 log_cli_date_format = %Y-%m-%d %H:%M:%S
 ```
@@ -100,7 +135,7 @@ __log_cli_date_format__: Specifies the date format used in log messages.
 
 ## Getting the results
 
-A new directory named `performance_results` is created inside your project's root folder. Once all the tests are completed, two files are created inside the performance-results directory: `results.json` and `results.csv`. The analyzed data includes average time, standard error of mean (SEM), number of samples, minimum value, maximum value, earliest time, and latest time. The results table is also printed to the terminal log.
+A new directory named `performance_results` is created inside your project's root folder (unless you use a custom directory name). Once all the tests are completed, two files are created inside the performance-results directory: `results.json` and `results.csv`. The analyzed data includes average time, standard error of mean (SEM), number of samples, minimum value, maximum value, earliest time, and latest time. The results table is also printed to the terminal log.
 
 ## Support
 
