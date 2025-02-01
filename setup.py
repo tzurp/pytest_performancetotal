@@ -7,7 +7,7 @@ setup(
     name='pytest-performancetotal',
     packages=find_packages(where='src', exclude=['*tests*']),
     package_dir={'': 'src'},
-    version='0.2.8',
+    version='0.2.9',
     author='Tzur Paldi',
     author_email='tzur.paldi@outlook.com',
     maintainer='Tzur Paldi',
