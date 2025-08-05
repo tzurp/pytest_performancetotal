@@ -144,3 +144,5 @@ To analyze existing performance data in bulk without generating new tests, it is
 ## Support
 
 For any questions or suggestions contact me at: [tzur.paldi@outlook.com](mailto:tzur.paldi@outlook.com?subjet=pytest-performancetotal%20Support)
+
+📬 Maintained by [Tzur Paldi](https://github.com/tzurp) — explore my GitHub profile for more tools.
